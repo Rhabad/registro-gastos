@@ -1,0 +1,18 @@
+<table border="1">
+    <thead>
+        <tr>
+            <th>col1</th>
+            <th>col2</th>
+            <th>col3</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($productos as $producto): ?>
+            <tr>
+                <td><?= $producto[0] ?></td>
+                <td><?= $producto[1] ?></td>
+                <td><?= $producto[2] ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
