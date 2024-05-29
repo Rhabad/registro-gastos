@@ -17,11 +17,16 @@ CREATE TABLE establecimiento_comercial (
     zona VARCHAR(100)
 );
 
+DROP TABLE registro;
+
 CREATE TABLE registro (
     id_registro INT PRIMARY KEY AUTO_INCREMENT,
     prod_id INT NOT NULL,
     establ_id INT,
-    fecha_compra DATE
+    fecha_compra DATE,
+    cantidad int,
+    FOREIGN KEY (prod_id) REFERENCES producto (id_producto),
+    FOREIGN KEY (establ_id) REFERENCES establecimiento_comercial (id_establ_com)
 );
 
 CREATE TABLE detalle (
