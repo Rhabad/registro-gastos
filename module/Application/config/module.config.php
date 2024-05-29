@@ -10,6 +10,7 @@ use Laminas\ServiceManager\Factory\InvokableFactory;
 
 return [
     'router' => [
+        // este es ruta /public/
         'routes' => [
             'home' => [
                 'type' => Literal::class,
@@ -21,28 +22,31 @@ return [
                     ],
                 ],
             ],
-            'nuevo' => [
-                'type' => Segment::class,
-                'options' => [
-                    'route' => '/nuevo[/:action]',
-                    'defaults' => [
-                        'controller' => Controller\NuevoController::class,
-                        'action' => 'productos',
-                    ],
-                ],
-            ],
 
-            //tambien se puede hacer asi
-            // ],'nuevo' => [
-            //     'type' => Literal::class,
+            // /public/nuevo/productos 0 cualquier otro en este ultimo
+            // 'nuevo' => [
+            //     'type' => Segment::class,
             //     'options' => [
-            //         'route' => '/nuevo/productos',
+            //         'route' => '/nuevo[/:action]',
             //         'defaults' => [
             //             'controller' => Controller\NuevoController::class,
             //             'action' => 'productos',
             //         ],
             //     ],
             // ],
+
+            //tambien se puede hacer asi
+            // /public/productos
+            'nuevo' => [
+                'type' => Literal::class,
+                'options' => [
+                    'route' => '/productos',
+                    'defaults' => [
+                        'controller' => Controller\NuevoController::class,
+                        'action' => 'productos',
+                    ],
+                ],
+            ],
 
 
             'application' => [
@@ -59,6 +63,7 @@ return [
     ],
     'controllers' => [
         'factories' => [
+                // si quieres un nuevo controlador, agregar uno nuevo aqui
             Controller\IndexController::class => InvokableFactory::class,
             Controller\NuevoController::class => InvokableFactory::class,
         ],
