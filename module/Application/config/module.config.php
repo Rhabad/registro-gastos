@@ -59,6 +59,25 @@ return [
                     ],
                 ],
             ],
+
+
+            /**
+             * productos
+             */
+
+            'producto' => [
+                'type' => Literal::class,
+                'options' => [
+                    'route' => '/producto-agregar',
+                    'defaults' => [
+                        'controller' => Controller\ProductoController::class,
+                        'action' => 'productoAgregar',
+                    ],
+                ],
+            ],
+            /**
+             * productos
+             */
         ],
     ],
     'controllers' => [
@@ -66,6 +85,7 @@ return [
                 // si quieres un nuevo controlador, agregar uno nuevo aqui
             Controller\IndexController::class => InvokableFactory::class,
             Controller\NuevoController::class => InvokableFactory::class,
+            Controller\ProductoController::class => InvokableFactory::class,
         ],
     ],
     'view_manager' => [
