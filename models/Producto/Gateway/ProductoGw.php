@@ -2,6 +2,7 @@
 namespace Models\Producto\Gateway;
 
 use Library\DB;
+use Models\Producto\Model\Producto;
 
 class ProductoGw
 {
@@ -11,5 +12,29 @@ class ProductoGw
         $this->db = $db;
     }
 
+    public function createProducto(Producto $producto)
+    {
+        $query = 'INSERT INTO
+        producto (
+            nombre_prod,
+            tipo_prod,
+            precio,
+            precio_oferta
+        )
+    VALUES (
+            ":nombre_prod",
+            ":tipo_prod",
+            ":precio",
+            ":precio_oferta"
+        )';
 
+        $binds = [
+            $producto->getNombreProd(),
+            $producto->getTipoProd(),
+            $producto->getPrecio(),
+            $producto->getPrecioOferta()
+        ];
+
+        $this->db->ejecutarQuery($query, $binds);
+    }
 }
