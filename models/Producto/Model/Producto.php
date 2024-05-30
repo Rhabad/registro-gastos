@@ -10,7 +10,7 @@ class Producto
     private $precioOferta;
 
 
-    public function __construct($idProducto, $nombreProd, $tipoProd, $precio, $precioOferta)
+    public function __construct(int $idProducto = null, string $nombreProd, string $tipoProd, int $precio, int $precioOferta)
     {
         $this->idProducto = $idProducto;
         $this->nombreProd = $nombreProd;
