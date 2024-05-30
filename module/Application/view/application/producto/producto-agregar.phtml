@@ -1,0 +1,21 @@
+<h1>Enviar Datos del Usuario</h1>
+
+<form id="userForm" method="post">
+    <input type="hidden" name="id" value="<?= $user->id ?>">
+
+    <label for="username">Nombre de usuario:</label>
+    <input type="text" id="username" name="username" value="<?= $user->username ?>">
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" value="<?= $user->email ?>">
+
+    <button type="button" onclick="submitForm()">Enviar</button>
+</form>
+
+<script>
+    function submitForm() {
+        var form = document.getElementById('userForm');
+        form.action = '/user/processForm';  // Establecer la URL de envío del formulario
+        form.submit();
+    }
+</script>
