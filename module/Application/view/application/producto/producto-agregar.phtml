@@ -1,6 +1,6 @@
 <h1>Enviar Datos del Usuario</h1>
 
-<form action="<?= $this->url('productoEnviar') ?>" method="post">
+<form id="form-producto" method="post">
     <input type="hidden" name="id" value="">
 
     <label for="nombreProd">Nombre de Producto:</label>
@@ -17,3 +17,28 @@
 
     <button type="submit">Enviar</button>
 </form>
+
+<script>
+
+    let form = document.getElementById('form-producto');
+
+    // captura evento de submit
+    form.addEventListener('submit', (event) => {
+        event.preventDefault(); // evita envio formulario
+
+        const formData = new FormData(form); // obtiene los datos del formulario
+
+        // ruta de envio formulario
+        fetch('<?= $this->url('productoEnviar') ?>', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                form.reset();
+            })
+            .catch(error => console.error('Error', error));
+    });
+
+</script>
