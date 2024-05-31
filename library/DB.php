@@ -43,17 +43,26 @@ class DB
         // ver si tiene varios parametros a agregar
         $campos = $this->binds($queryLimpia);
 
+        // primera palabra de la consulta
+        $primeraPalabra = explode(" ", $queryLimpia)[0];
+
         $this->stmt = $this->pdo->prepare($queryLimpia);
 
         if (count($campos) > 0) {
 
+
             $this->bindParametros($campos, $binds);
-            $this->stmt->execute();
+
+            // SELECT, UPDATE, DELETE, INSERT
+            return $this->ejecutar($primeraPalabra);
         } else {
-            $this->stmt->execute();
+            return $this->ejecutar($primeraPalabra);
         }
     }
 
+    /**
+     * mapea los parametros
+     */
     public function bindParametros(array $campos = [], array $binds = [])
     {
         $coinciden = count($campos) == count($binds);
@@ -85,5 +94,40 @@ class DB
         return $bindeos;
     }
 
+
+    /**
+     * dependiendo de la consulta (select, insert, etc)
+     * hara cosas diferentes.
+     */
+    public function ejecutar($primeraPalabra)
+    {
+        $registros = [];
+
+        // SELECT, UPDATE, DELETE, INSERT
+        switch (strtolower($primeraPalabra)) {
+            case "select":
+
+                $this->stmt->execute();
+                while ($row = $this->stmt->fetch(PDO::FETCH_OBJ)) {
+                    $registros[] = $row;
+                }
+                break;
+
+            case "update":
+
+                $this->stmt->execute();
+                break;
+            case "delete":
+
+                $this->stmt->execute();
+                break;
+            case "insert":
+
+                $this->stmt->execute();
+                break;
+        }
+
+        return $registros;
+    }
 
 }
