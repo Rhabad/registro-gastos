@@ -65,7 +65,8 @@ return [
              * productos
              */
 
-            'producto' => [
+            // agregar producto pagina
+            'productoAgregar' => [
                 'type' => Literal::class,
                 'options' => [
                     'route' => '/producto-agregar',
@@ -75,6 +76,20 @@ return [
                     ],
                 ],
             ],
+
+
+            // enviar datos producto agregado
+            'productoEnviar' => [
+                'type' => Literal::class,
+                'options' => [
+                    'route' => '/producto-enviar',
+                    'defaults' => [
+                        'controller' => Controller\ProductoController::class,
+                        'action' => 'productoEnviar',
+                    ],
+                ],
+            ],
+
             /**
              * productos
              */

@@ -22,19 +22,20 @@ class ProductoGw
             precio_oferta
         )
     VALUES (
-            ":nombre_prod",
-            ":tipo_prod",
-            ":precio",
-            ":precio_oferta"
+            :nombre_prod,
+            :tipo_prod,
+            :precio,
+            :precio_oferta
         )';
 
-        $binds = [
-            $producto->getNombreProd(),
-            $producto->getTipoProd(),
-            $producto->getPrecio(),
-            $producto->getPrecioOferta()
-        ];
-
-        $this->db->ejecutarQuery($query, $binds);
+        $this->db->ejecutarQuery(
+            $query,
+            [
+                $producto->getNombreProd(),
+                $producto->getTipoProd(),
+                $producto->getPrecio(),
+                $producto->getPrecioOferta()
+            ]
+        );
     }
 }

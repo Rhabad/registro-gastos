@@ -4,6 +4,7 @@ namespace Application\Controller;
 use Laminas\Mvc\Controller\AbstractActionController;
 use Library\DB;
 use Models\Producto\Gateway\ProductoGw;
+use Models\Producto\Model\Producto;
 
 class ProductoController extends AbstractActionController
 {
@@ -14,11 +15,47 @@ class ProductoController extends AbstractActionController
         $this->db = new DB();
     }
 
+    public $retorno = [
+        'error' => false,
+        'error_code' => 0,
+        'mensaje' => '',
+        'data' => ''
+    ];
+
+    private function jsonResponse($retorno)
+    {
+        $response = $this->getResponse();
+        $response->setContent(json_encode($retorno));
+        $response->getHeaders()->addHeaderLine('Content-Type', 'application/json');
+        return $response;
+    }
+
+
+
     public function productoAgregarAction()
     {
         $productoGw = new ProductoGw($this->db);
         $data = $this->params()->fromPost();
 
+
+    }
+
+    public function productoEnviarAction()
+    {
+        $data = $this->params()->fromPost();
+        $productoGw = new ProductoGw($this->db);
+
+        $producto = new Producto(
+            null,
+            $data['nombreProd'],
+            $data['tipoProd'],
+            $data['precio'],
+            $data['precioOferta']
+        );
+
+        $productoGw->createProducto($producto);
+        $this->retorno['error'] = false;
+        return $this->jsonResponse($this->retorno);
 
     }
 }
