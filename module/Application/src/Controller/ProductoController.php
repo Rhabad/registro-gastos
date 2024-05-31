@@ -31,11 +31,13 @@ class ProductoController extends AbstractActionController
     }
 
 
+    /**
+     * mantenedor producto
+     */
 
     public function productoAgregarAction()
     {
         $productoGw = new ProductoGw($this->db);
-        $data = $this->params()->fromPost();
 
 
     }
@@ -54,8 +56,13 @@ class ProductoController extends AbstractActionController
         );
 
         $productoGw->createProducto($producto);
+
         $this->retorno['error'] = false;
         return $this->jsonResponse($this->retorno);
 
     }
+
+    /**
+     * mantenedor producto
+     */
 }
