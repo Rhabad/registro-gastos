@@ -90,6 +90,17 @@ return [
                 ],
             ],
 
+            'productoListar' => [
+                'type' => Literal::class,
+                'options' => [
+                    'route' => '/producto-listar',
+                    'defaults' => [
+                        'controller' => Controller\ProductoController::class,
+                        'action' => 'productoListar',
+                    ],
+                ],
+            ],
+
             /**
              * productos
              */

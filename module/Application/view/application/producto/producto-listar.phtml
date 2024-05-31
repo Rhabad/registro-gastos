@@ -1,0 +1,22 @@
+<table class="table table-bordered">
+    <thead>
+        <tr class="table-primary">
+            <th>ID</th>
+            <th>Producto</th>
+            <th>Tipo</th>
+            <th>Precio</th>
+            <th>Precio Oferta</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($productos as $producto): ?>
+            <tr class="table-info">
+                <td><?= $producto->id_producto ?></td>
+                <td><?= $producto->nombre_prod ?></td>
+                <td><?= $producto->tipo_prod ?></td>
+                <td><?= $producto->precio ?></td>
+                <td><?= $producto->precio_oferta ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>

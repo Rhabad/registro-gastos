@@ -2,6 +2,7 @@
 namespace Application\Controller;
 
 use Laminas\Mvc\Controller\AbstractActionController;
+use Laminas\View\Model\ViewModel;
 use Library\DB;
 use Models\Producto\Gateway\ProductoGw;
 use Models\Producto\Model\Producto;
@@ -60,6 +61,17 @@ class ProductoController extends AbstractActionController
         $this->retorno['error'] = false;
         return $this->jsonResponse($this->retorno);
 
+    }
+
+    public function productoListarAction()
+    {
+        $prodGw = new ProductoGw($this->db);
+
+        $productos = $prodGw->listarProductos();
+
+        return [
+            "productos" => $productos
+        ];
     }
 
     /**

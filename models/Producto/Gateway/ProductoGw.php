@@ -38,4 +38,11 @@ class ProductoGw
             ]
         );
     }
+
+    public function listarProductos()
+    {
+        $query = 'SELECT * FROM producto;';
+
+        return $this->db->ejecutarQuery($query);
+    }
 }
