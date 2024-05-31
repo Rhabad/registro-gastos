@@ -41,26 +41,26 @@ class DB
         $queryLimpia = trim($queryLimpia);
 
         // ver si tiene varios parametros a agregar
-        $parametros = $this->parametros($queryLimpia);
+        $campos = $this->binds($queryLimpia);
 
         $this->stmt = $this->pdo->prepare($queryLimpia);
 
-        if (count($parametros) > 0) {
+        if (count($campos) > 0) {
 
-            $this->bindParametros($parametros, $binds);
+            $this->bindParametros($campos, $binds);
             $this->stmt->execute();
         } else {
             $this->stmt->execute();
         }
     }
 
-    public function bindParametros(array $parametros = [], array $binds = [])
+    public function bindParametros(array $campos = [], array $binds = [])
     {
-        $coinciden = count($parametros) == count($binds);
+        $coinciden = count($campos) == count($binds);
 
         if ($coinciden) {
-            for ($i = 0; $i < count($parametros); $i++) {
-                $this->stmt->bindParam($parametros[$i], $binds[$i]);
+            for ($i = 0; $i < count($campos); $i++) {
+                $this->stmt->bindParam($campos[$i], $binds[$i]);
             }
         } else {
             throw new \InvalidArgumentException('El número de parámetros y valores de vinculación no coinciden.');
@@ -68,11 +68,21 @@ class DB
     }
 
 
-    public function parametros(string $query)
+    /**
+     * te extrae las palabrsa que empiezen con : 
+     * ejemplo ->    :ejemplo
+     */
+    public function binds(string $query)
     {
-        $parametros = [];
-        preg_match_all('/:\w+/', $query, $parametros);
-        return $parametros;
+        $binds = [];
+        preg_match_all('/:\w+/', $query, $binds);
+
+        $bindeos = [];
+        foreach ($binds as $bind) {
+            $bindeos = str_replace(':', '', $bind);
+        }
+
+        return $bindeos;
     }
 
 
