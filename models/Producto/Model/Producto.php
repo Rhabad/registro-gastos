@@ -5,16 +5,16 @@ class Producto
 {
     private $idProducto;
     private $nombreProd;
-    private $tipoProd;
+    private $tipoProdId;
     private $precio;
     private $precioOferta;
 
 
-    public function __construct(int $idProducto = null, string $nombreProd, string $tipoProd, int $precio, int $precioOferta)
+    public function __construct(int $idProducto = null, string $nombreProd, int $tipoProdId, int $precio, int $precioOferta)
     {
         $this->idProducto = $idProducto;
         $this->nombreProd = $nombreProd;
-        $this->tipoProd = $tipoProd;
+        $this->tipoProdId = $tipoProdId;
         $this->precio = $precio;
         $this->precioOferta = $precioOferta;
     }
@@ -63,9 +63,9 @@ class Producto
     /**
      * Get the value of tipoProd
      */
-    public function getTipoProd()
+    public function getTipoProdId()
     {
-        return $this->tipoProd;
+        return $this->tipoProdId;
     }
 
     /**
@@ -73,9 +73,9 @@ class Producto
      *
      * @return  self
      */
-    public function setTipoProd($tipoProd)
+    public function setTipoProdId($tipoProd)
     {
-        $this->tipoProd = $tipoProd;
+        $this->tipoProdId = $tipoProd;
 
         return $this;
     }

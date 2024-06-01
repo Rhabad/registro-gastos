@@ -32,7 +32,7 @@ class ProductoGw
             $query,
             [
                 $producto->getNombreProd(),
-                $producto->getTipoProd(),
+                $producto->getTipoProdId(),
                 $producto->getPrecio(),
                 $producto->getPrecioOferta()
             ]
