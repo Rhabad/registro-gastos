@@ -21,7 +21,8 @@ class IndexControllerTest extends AbstractHttpControllerTestCase
         $this->setApplicationConfig(ArrayUtils::merge(
             include __DIR__ . '/../../../../config/application.config.php',
             $configOverrides
-        ));
+        )
+        );
 
         parent::setUp();
     }
@@ -33,7 +34,7 @@ class IndexControllerTest extends AbstractHttpControllerTestCase
         $this->assertModuleName('application');
         $this->assertControllerName(IndexController::class); // as specified in router's controller name alias
         $this->assertControllerClass('IndexController');
-        $this->assertMatchedRouteName('home');
+        $this->assertMatchedRouteName('producto');
     }
 
     public function testIndexActionViewModelTemplateRenderedWithinLayout(): void

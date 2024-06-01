@@ -12,54 +12,16 @@ return [
     'router' => [
         // este es ruta /public/
         'routes' => [
-            'home' => [
+            'producto' => [
                 'type' => Literal::class,
                 'options' => [
-                    'route' => '/',
+                    'route' => '/producto',
                     'defaults' => [
-                        'controller' => Controller\IndexController::class,
+                        'controller' => Controller\ProductoController::class,
                         'action' => 'index',
                     ],
                 ],
             ],
-
-            // /public/nuevo/productos 0 cualquier otro en este ultimo
-            // 'nuevo' => [
-            //     'type' => Segment::class,
-            //     'options' => [
-            //         'route' => '/nuevo[/:action]',
-            //         'defaults' => [
-            //             'controller' => Controller\NuevoController::class,
-            //             'action' => 'productos',
-            //         ],
-            //     ],
-            // ],
-
-            //tambien se puede hacer asi
-            // /public/productos
-            'nuevo' => [
-                'type' => Literal::class,
-                'options' => [
-                    'route' => '/productos',
-                    'defaults' => [
-                        'controller' => Controller\NuevoController::class,
-                        'action' => 'productos',
-                    ],
-                ],
-            ],
-
-
-            'application' => [
-                'type' => Segment::class,
-                'options' => [
-                    'route' => '/application[/:action]',
-                    'defaults' => [
-                        'controller' => Controller\IndexController::class,
-                        'action' => 'index',
-                    ],
-                ],
-            ],
-
 
             /**
              * productos
@@ -110,7 +72,6 @@ return [
         'factories' => [
                 // si quieres un nuevo controlador, agregar uno nuevo aqui
             Controller\IndexController::class => InvokableFactory::class,
-            Controller\NuevoController::class => InvokableFactory::class,
             Controller\ProductoController::class => InvokableFactory::class,
         ],
     ],
