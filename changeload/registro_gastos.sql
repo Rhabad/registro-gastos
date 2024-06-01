@@ -1,14 +1,15 @@
 CREATE DATABASE registro_gastos DEFAULT CHARACTER SET = 'utf8mb4';
 
+DROP DATABASE registro_gastos;
+
 USE registro_gastos;
 
 -- creamos las tablas
-CREATE TABLE producto (
-    id_producto INT PRIMARY KEY AUTO_INCREMENT,
-    nombre_prod VARCHAR(50) NOT NULL,
+
+CREATE TABLE tipo_producto (
+    id_tipo_prod INT PRIMARY KEY AUTO_INCREMENT,
     tipo_prod VARCHAR(30) NOT NULL,
-    precio int,
-    precio_oferta int
+    descripcion TEXT
 );
 
 CREATE TABLE establecimiento_comercial (
@@ -17,7 +18,16 @@ CREATE TABLE establecimiento_comercial (
     zona VARCHAR(100)
 );
 
-DROP TABLE registro;
+CREATE TABLE producto (
+    id_producto INT PRIMARY KEY AUTO_INCREMENT,
+    nombre_prod VARCHAR(50) NOT NULL,
+    tipo_prod_id INT NOT NULL,
+    precio int,
+    precio_oferta int,
+    FOREIGN KEY (tipo_prod_id) REFERENCES tipo_producto (id_tipo_prod)
+);
+
+DROP TABLE producto;
 
 CREATE TABLE registro (
     id_registro INT PRIMARY KEY AUTO_INCREMENT,
