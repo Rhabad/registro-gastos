@@ -36,11 +36,14 @@ class ProductoController extends AbstractActionController
      * mantenedor producto
      */
 
+    public function indexAction()
+    {
+        return new ViewModel();
+    }
+
     public function productoAgregarAction()
     {
         $productoGw = new ProductoGw($this->db);
-
-
     }
 
     public function productoEnviarAction()
