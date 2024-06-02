@@ -15,10 +15,20 @@ return [
             'producto' => [
                 'type' => Literal::class,
                 'options' => [
-                    'route' => '/producto',
+                    'route' => '/',
                     'defaults' => [
                         'controller' => Controller\ProductoController::class,
                         'action' => 'index',
+                    ],
+                ],
+            ],
+            'registro' => [
+                'type' => Literal::class,
+                'options' => [
+                    'route' => '/registro',
+                    'defaults' => [
+                        'controller' => Controller\RegistroController::class,
+                        'action' => 'registro',
                     ],
                 ],
             ],
@@ -72,6 +82,7 @@ return [
         'factories' => [
                 // si quieres un nuevo controlador, agregar uno nuevo aqui
             Controller\ProductoController::class => InvokableFactory::class,
+            Controller\RegistroController::class => InvokableFactory::class,
         ],
     ],
     'view_manager' => [

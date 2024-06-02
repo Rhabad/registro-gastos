@@ -1,0 +1,66 @@
+<style>
+    /* Estilo personalizado para el contenedor con borde */
+    .bordered-container {
+        border: 2px solid #d0d3d4;
+        /* Color del borde */
+        padding: 10px;
+        /* Espaciado interno */
+        border-radius: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        /* Esquinas redondeadas */
+    }
+</style>
+
+
+<form id="form-producto" method="post">
+    <div class="row">
+        <div class="col">
+            <input type="submit" value="Realizar Compra" class="btn btn-primary">
+        </div>
+        <div class="container">
+            <div class="row g-2 mb-4 mt-4 align-items-center bordered-container">
+                <div class="col">
+                    <label for="producto" class="col-form-label">Producto</label>
+                    <input type="text" id="producto" class="form-control" aria-describedby="producto">
+                </div>
+
+                <div class="col">
+                    <label for="inputPassword6" class="col-form-label">Tipo</label>
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Seleciona tipo producto</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+
+                <div class="col col-md-2">
+                    <label for="precio" class="col-form-label">Precio</label>
+                    <input type="text" id="precio" class="form-control" aria-describedby="precio">
+                </div>
+
+                <div class="col col-md-2">
+                    <label for="precioOferta" class="col-form-label">Oferta</label>
+                    <input type="text" id="precioOferta" class="form-control" aria-describedby="precioOferta">
+                </div>
+
+                <div class="col col-md-1">
+                    <label for="cantidad" class="col-form-label">Cantidad</label>
+                    <input type="number" id="cantidad" value="0" class="form-control" aria-describedby="cantidad">
+                </div>
+
+                <div class="col">
+                    <label for="establecimiento" class="col-form-label">Opcional</label>
+                    <select class="form-select" aria-label="establecimiento">
+                        <option selected>¿Donde lo compraste?</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</form>
