@@ -15,9 +15,9 @@
 <form id="form-producto" method="post">
     <div class="row">
         <div class="col">
-            <input type="submit" value="Realizar Compra" class="btn btn-primary">
+            <input type="submit" value="Realizar Registro De Compra" class="btn btn-primary">
         </div>
-        <div class="container">
+        <div class="container contenido-form">
             <div class="row g-2 mb-4 mt-4 align-items-center bordered-container">
                 <div class="col">
                     <label for="producto" class="col-form-label">Producto</label>
@@ -36,12 +36,13 @@
 
                 <div class="col col-md-2">
                     <label for="precio" class="col-form-label">Precio</label>
-                    <input type="text" id="precio" class="form-control" aria-describedby="precio">
+                    <input type="number" value="0" id="precio" class="form-control" aria-describedby="precio">
                 </div>
 
                 <div class="col col-md-2">
                     <label for="precioOferta" class="col-form-label">Oferta</label>
-                    <input type="text" id="precioOferta" class="form-control" aria-describedby="precioOferta">
+                    <input type="number" value="0" id="precioOferta" class="form-control"
+                        aria-describedby="precioOferta">
                 </div>
 
                 <div class="col col-md-1">
@@ -61,6 +62,30 @@
             </div>
         </div>
 
+        <div class="row-cols-5">
+            <button type="button" class="btn btn-success" onclick="nuevoRegistro()">+</button>
+        </div>
+
     </div>
+
+    <script>
+        let contenedor = document.querySelector('.contenido-form');
+        function nuevoRegistro() {
+            let registro = contenedor.firstElementChild.cloneNode(true);
+            let inputs = registro.querySelectorAll('input');
+
+            inputs.forEach(input => {
+                let tipoCampo = input.type;
+                if (tipoCampo == "number") {
+                    input.value = '0';
+                } else {
+                    input.value = '';
+                }
+            });
+
+            contenedor.appendChild(registro);
+
+        }
+    </script>
 
 </form>
