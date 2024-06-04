@@ -10,7 +10,7 @@ class Registro
     private $cantidad;
 
 
-    public function __construct(int $idRegistro = null, int $prodId, int $establId, string $fechaCompra, int $cantidad)
+    public function __construct(int $idRegistro = null, int $prodId, int $establId = null, string $fechaCompra, int $cantidad)
     {
         $this->idRegistro = $idRegistro;
         $this->prodId = $prodId;
