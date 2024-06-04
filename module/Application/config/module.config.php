@@ -32,6 +32,16 @@ return [
                     ],
                 ],
             ],
+            'registro-enviar' => [
+                'type' => Literal::class,
+                'options' => [
+                    'route' => '/registro-enviar',
+                    'defaults' => [
+                        'controller' => Controller\RegistroController::class,
+                        'action' => 'registroEnviar',
+                    ],
+                ],
+            ],
 
             /**
              * productos

@@ -21,12 +21,12 @@
             <div class="row g-2 mb-4 mt-4 align-items-center bordered-container">
                 <div class="col">
                     <label for="producto" class="col-form-label">Producto</label>
-                    <input type="text" id="producto" class="form-control" aria-describedby="producto">
+                    <input type="text" id="producto" name="producto[]" class="form-control" aria-describedby="producto">
                 </div>
 
                 <div class="col">
                     <label for="inputPassword6" class="col-form-label">Tipo</label>
-                    <select class="form-select" aria-label="Default select example">
+                    <select class="form-select" name="tipo[]" aria-label="Default select example">
                         <option selected>Seleciona tipo producto</option>
                         <option value="1">One</option>
                         <option value="2">Two</option>
@@ -36,23 +36,25 @@
 
                 <div class="col col-md-2">
                     <label for="precio" class="col-form-label">Precio</label>
-                    <input type="number" value="0" id="precio" class="form-control" aria-describedby="precio">
+                    <input type="number" value="0" name="precio[]" id="precio" class="form-control"
+                        aria-describedby="precio">
                 </div>
 
                 <div class="col col-md-2">
                     <label for="precioOferta" class="col-form-label">Oferta</label>
-                    <input type="number" value="0" id="precioOferta" class="form-control"
+                    <input type="number" value="0" id="precioOferta" name="precioOferta[]" class="form-control"
                         aria-describedby="precioOferta">
                 </div>
 
                 <div class="col col-md-1">
                     <label for="cantidad" class="col-form-label">Cantidad</label>
-                    <input type="number" id="cantidad" value="0" class="form-control" aria-describedby="cantidad">
+                    <input type="number" id="cantidad" name="cantidad[]" value="0" class="form-control"
+                        aria-describedby="cantidad">
                 </div>
 
                 <div class="col">
                     <label for="establecimiento" class="col-form-label">Opcional</label>
-                    <select class="form-select" aria-label="establecimiento">
+                    <select class="form-select" name="establecimiento[]" aria-label="establecimiento">
                         <option selected>¿Donde lo compraste?</option>
                         <option value="1">One</option>
                         <option value="2">Two</option>
@@ -86,6 +88,26 @@
             contenedor.appendChild(registro);
 
         }
+
+
+        let form = document.getElementById('form-producto');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const data = new FormData(form);
+
+            fetch('<?= $this->url('registro-enviar') ?>', {
+                method: 'POST',
+                body: data
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    form.reset();
+                })
+                .catch(error => console.error('Error', error));
+        })
     </script>
 
 </form>
