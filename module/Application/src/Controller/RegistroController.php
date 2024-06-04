@@ -5,6 +5,8 @@ use Laminas\Mvc\Controller\AbstractActionController;
 
 use Laminas\View\Model\ViewModel;
 use Library\DB;
+use Models\Establecimiento\Gateway\EstablecimientoGw;
+use Models\TipoProducto\Gateway\TipoProductoGw;
 
 class RegistroController extends AbstractActionController
 {
@@ -31,7 +33,16 @@ class RegistroController extends AbstractActionController
 
     public function registroAction()
     {
-        return new ViewModel();
+        $tipoGw = new TipoProductoGw($this->db);
+        $establGw = new EstablecimientoGw($this->db);
+
+        $tipo = $tipoGw->listarTipo();
+        $establ = $establGw->listarEstablecimiento();
+
+        return [
+            'tipos' => $tipo,
+            'establs' => $establ
+        ];
     }
 
     public function registroEnviarAction()

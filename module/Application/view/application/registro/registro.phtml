@@ -28,9 +28,9 @@
                     <label for="inputPassword6" class="col-form-label">Tipo</label>
                     <select class="form-select" name="tipo[]" aria-label="Default select example">
                         <option selected>Seleciona tipo producto</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <?php foreach ($tipos as $tipo): ?>
+                            <option value="<?= $tipo->id_tipo_prod; ?>"><?= $tipo->tipo_prod; ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
 
@@ -56,9 +56,11 @@
                     <label for="establecimiento" class="col-form-label">Opcional</label>
                     <select class="form-select" name="establecimiento[]" aria-label="establecimiento">
                         <option selected>¿Donde lo compraste?</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <?php foreach ($establs as $establ): ?>
+                            <option value="<?= $establ->id_establ_com; ?>"><?= $establ->zona; ?> -
+                                <?= $establ->nombre_establ; ?>
+                            </option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
             </div>
