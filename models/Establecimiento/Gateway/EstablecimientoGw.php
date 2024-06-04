@@ -31,7 +31,7 @@ class EstablecimientoGw
 
     public function lastProducto()
     {
-        $query = 'SELECT MAX(id_establ_com) FROM establecimiento_comercial';
+        $query = 'SELECT MAX(id_establ_com) as id FROM establecimiento_comercial';
 
         return $this->db->ejecutarQuery($query);
     }

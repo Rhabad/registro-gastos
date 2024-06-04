@@ -41,7 +41,7 @@ class ProductoGw
 
     public function lastProducto()
     {
-        $query = 'SELECT MAX(id_producto) FROM producto';
+        $query = 'SELECT MAX(id_producto) as id FROM producto';
 
         return $this->db->ejecutarQuery($query);
     }
