@@ -29,6 +29,13 @@ class EstablecimientoGw
         );
     }
 
+    public function lastProducto()
+    {
+        $query = 'SELECT MAX(id_establ_com) FROM establecimiento_comercial';
+
+        return $this->db->ejecutarQuery($query);
+    }
+
     public function listarEstablecimiento()
     {
         $query = 'SELECT * FROM establecimiento_comercial;';
