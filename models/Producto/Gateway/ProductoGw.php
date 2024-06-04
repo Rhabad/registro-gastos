@@ -39,6 +39,13 @@ class ProductoGw
         );
     }
 
+    public function lastProducto()
+    {
+        $query = 'SELECT MAX(id_producto) FROM producto';
+
+        return $this->db->ejecutarQuery($query);
+    }
+
     public function listarProductos()
     {
         $query = 'SELECT * FROM producto;';
