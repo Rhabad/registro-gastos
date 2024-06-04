@@ -33,6 +33,6 @@ class EstablecimientoGw
     {
         $query = 'SELECT * FROM establecimiento_comercial;';
 
-        $this->db->ejecutarQuery($query);
+        return $this->db->ejecutarQuery($query);
     }
 }
