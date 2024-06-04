@@ -17,13 +17,13 @@ class ProductoGw
         $query = 'INSERT INTO
         producto (
             nombre_prod,
-            tipo_prod,
+            tipo_prod_id,
             precio,
             precio_oferta
         )
     VALUES (
             :nombre_prod,
-            :tipo_prod,
+            :tipo_prod_id,
             :precio,
             :precio_oferta
         )';
