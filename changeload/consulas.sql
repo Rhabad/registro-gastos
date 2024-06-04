@@ -1,3 +1,5 @@
+-- producto
+
 INSERT INTO
     producto (
         nombre_prod,
@@ -13,3 +15,13 @@ VALUES (
     );
 
 SELECT * FROM producto;
+
+-- establecimiento comercial
+
+INSERT INTO
+    establecimiento_comercial (nombre_establ, zona)
+VALUES ("Supermercado", "Coquimbo");
+
+SELECT * FROM establecimiento_comercial;
+
+-- tipor producto
