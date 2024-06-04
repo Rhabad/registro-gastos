@@ -24,4 +24,13 @@ VALUES ("Supermercado", "Coquimbo");
 
 SELECT * FROM establecimiento_comercial;
 
--- tipor producto
+-- tipo producto
+
+INSERT INTO
+    tipo_producto (tipo_prod, descripcion)
+VALUES (
+        "Lacteo",
+        "Productos que provienen de la leche"
+    );
+
+SELECT * FROM tipo_producto;
