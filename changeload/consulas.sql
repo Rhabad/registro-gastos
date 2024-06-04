@@ -34,3 +34,18 @@ VALUES (
     );
 
 SELECT * FROM tipo_producto;
+
+-- registro
+
+INSERT INTO
+    registro (
+        prod_id,
+        establ_id,
+        fecha_compra,
+        cantidad
+    )
+VALUES (1, 1, "2024-06-04", 2);
+
+-- consultas utiles
+
+SELECT MAX(id_producto) FROM producto;
