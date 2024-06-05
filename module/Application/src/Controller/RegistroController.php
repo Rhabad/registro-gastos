@@ -68,11 +68,15 @@ class RegistroController extends AbstractActionController
         ];
 
         for ($i = 0; $i < count($registros['productos']); $i++) {
+
+            $tipo = ($registros['tipos'][$i] == "Seleciona tipo producto") ? 1 : $registros['tipos'][$i];
+            $establ = ($registros['establecimientos'][$i] == "¿Donde lo compraste?") ? null : $registros['establecimientos'][$i];
+
             $prodGw->createProducto(
                 new Producto(
                     null,
                     $registros['productos'][$i],
-                    $registros['tipos'][$i],
+                    $tipo,
                     $registros['precios'][$i],
                     $registros['ofertas'][$i],
                 )
@@ -82,7 +86,7 @@ class RegistroController extends AbstractActionController
                 new Registro(
                     null,
                     $prodGw->lastProducto()[0]->id,
-                    $registros['establecimientos'][$i],
+                    $establ,
                     date('Y-m-d'),
                     $registros['cantidades'][$i],
                 )
