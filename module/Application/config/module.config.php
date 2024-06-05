@@ -42,6 +42,16 @@ return [
                     ],
                 ],
             ],
+            'registro-ver' => [
+                'type' => Literal::class,
+                'options' => [
+                    'route' => '/registro-ver',
+                    'defaults' => [
+                        'controller' => Controller\RegistroController::class,
+                        'action' => 'registroVer',
+                    ],
+                ],
+            ],
 
             /**
              * productos

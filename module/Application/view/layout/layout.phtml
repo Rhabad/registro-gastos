@@ -40,10 +40,17 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">otra ocsa</a>
+                        <a class="nav-link active" aria-current="page"
+                            href="<?= $this->url('registro') ?>">Registrar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">cosa 2</a>
+                        <a class="nav-link active" aria-current="page" href="<?= $this->url('registro-ver') ?>">Ver</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="<?= $this->url('producto') ?>">Agregar Tipo/Agrupacion</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="<?= $this->url('producto') ?>">Establecimientos</a>
                     </li>
                 </ul>
                 <form class="d-flex" role="search">

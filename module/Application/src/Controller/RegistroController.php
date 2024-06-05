@@ -97,4 +97,9 @@ class RegistroController extends AbstractActionController
         $this->retorno['error'] = false;
         return $this->jsonResponse($this->retorno);
     }
+
+    public function registroVerAction()
+    {
+
+    }
 }
