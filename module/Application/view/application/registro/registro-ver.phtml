@@ -1,0 +1,45 @@
+<style>
+    .tachado {
+        opacity: 0.5;
+        color: rgba(0, 0, 0, 0.5);
+        font-style: italic;
+    }
+</style>
+
+<table class="table table-bordered">
+    <thead>
+        <tr class="table-primary">
+            <th>ID</th>
+            <th>Producto</th>
+            <th>Tipo</th>
+            <th>Costo</th>
+            <th>Cantidad</th>
+            <th>Fecha Registro</th>
+            <th>Zona</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($registros as $registro): ?>
+            <tr class="table-info">
+                <td><?= $registro->id ?></td>
+                <td><?= $registro->producto ?></td>
+                <td><?= $registro->tipo ?></td>
+                <td>
+                    <?php
+                    if ($registro->oferta < $registro->precio || $registro->precio == 0) {
+                        echo "$" . $registro->oferta . " <s class=\"tachado\">" . $registro->precio . "</s>";
+                    } else if ($registro->oferta == $registro->precio) {
+                        echo "$" . $registro->oferta;
+                    } else if ($registro->oferta > $registro->precio) {
+                        echo "$" . $registro->precio;
+                    }
+                    ?>
+                </td>
+
+                <td><?= $registro->cantidad ?></td>
+                <td><?= $registro->fecha_registro ?></td>
+                <td><?= $registro->zona ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>

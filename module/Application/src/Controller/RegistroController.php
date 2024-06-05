@@ -54,7 +54,6 @@ class RegistroController extends AbstractActionController
         $datos = $this->params()->fromPost();
 
         $prodGw = new ProductoGw($this->db);
-        $establGW = new EstablecimientoGw($this->db);
         $registroGw = new RegistroGw($this->db);
 
         // registro de todos los agregados
@@ -100,6 +99,12 @@ class RegistroController extends AbstractActionController
 
     public function registroVerAction()
     {
+        $registroGw = new RegistroGw($this->db);
 
+        $registros = $registroGw->listarRegistros();
+
+        return [
+            'registros' => $registros,
+        ];
     }
 }
