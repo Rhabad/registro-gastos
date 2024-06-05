@@ -38,7 +38,15 @@
 
                 <td><?= $registro->cantidad ?></td>
                 <td><?= $registro->fecha_registro ?></td>
-                <td><?= $registro->zona ?></td>
+                <td>
+                    <?php
+                    if ($registro->zona == null) {
+                        echo "Desconocido";
+                    } else {
+                        echo $registro->zona;
+                    }
+                    ?>
+                </td>
             </tr>
         <?php endforeach; ?>
     </tbody>
