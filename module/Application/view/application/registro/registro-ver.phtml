@@ -55,8 +55,9 @@
                 <td><?= $registro->tipo ?></td>
                 <td>
                     <?php
-
-                    if ($registro->oferta > $registro->precio) {
+                    if ($registro->precio == 0) {
+                        echo "$" . $registro->oferta;
+                    } else if ($registro->oferta > $registro->precio) {
                         echo "$" . $registro->precio;
                     } else if ($registro->oferta == 0) {
                         echo "$" . $registro->precio;
