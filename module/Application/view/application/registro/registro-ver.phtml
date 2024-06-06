@@ -7,26 +7,24 @@
 </style>
 
 <div class="btn-group mb-3" role="group" aria-label="Basic checkbox toggle button group">
-    <form id="form-filtro" class="row">
+    <form id="form-filtro" class="row g-2">
         <select class="form-select col" aria-label="Default select example">
             <option selected>Agrupacion/Tipo</option>
             <?php foreach ($tipos as $tipo): ?>
                 <option value="<?= $tipo->id_tipo_prod; ?>"><?= $tipo->tipo_prod; ?></option>
             <?php endforeach; ?>
         </select>
-        <select class="form-select col" aria-label="Default select example">
+        <select class="form-select col" aria-label=" Default select example">
             <option selected>Zona</option>
             <?php foreach ($establs as $establ): ?>
                 <option value="<?= $establ->id_establ_com; ?>"><?= $establ->zona; ?> - <?= $establ->nombre_establ; ?>
                 </option>
             <?php endforeach; ?>
         </select>
-        <select class="form-select col" aria-label="Default select example">
-            <option selected>Open this select menu</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-        </select>
+        <div class="col-md-4">
+            <input type="text" id="producto" name="producto" class="form-control" aria-describedby="producto"
+                placeholder="Ingrese nombre producto">
+        </div>
         <div class="col">
             <input type="submit" value="Filtrar" class="btn btn-secondary">
         </div>
