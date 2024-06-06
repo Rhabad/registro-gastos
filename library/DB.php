@@ -17,8 +17,8 @@ class DB
     {
         $config = include __DIR__ . "/../config/autoload/global.php";
         $this->dsn = $config['dsn'];
-        $this->username = $config['username'];
-        $this->password = $config['password'];
+        // $this->username = $config['username'];
+        // $this->password = $config['password'];
         $this->conectar();
     }
 
@@ -26,7 +26,8 @@ class DB
     public function conectar()
     {
         try {
-            $this->pdo = new PDO($this->dsn, $this->username, $this->password);
+            // $this->pdo = new PDO($this->dsn, $this->username, $this->password);
+            $this->pdo = new PDO($this->dsn);
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
         } catch (\PDOException $e) {

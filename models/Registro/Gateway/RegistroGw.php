@@ -45,11 +45,7 @@ class RegistroGw
         p.precio_oferta as oferta,
         r.cantidad,
         r.fecha_compra as fecha_registro,
-        CONCAT(
-            ec.zona,
-            " - ",
-            ec.nombre_establ
-        ) as zona
+        ec.zona || " - " ||  ec.nombre_establ as zona
     FROM
         registro r
         LEFT JOIN producto p ON r.prod_id = p.id_producto

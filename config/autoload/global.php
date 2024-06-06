@@ -13,8 +13,10 @@
  */
 
 return [
-    "driver" => "Pdo_Mysql",
-    "dsn" => "mysql:host=mydb;dbname=registro_gastos",
-    "username" => "root",
-    "password" => "1234",
+    // "driver" => "Pdo_Mysql",
+    // "dsn" => "mysql:host=mydb;dbname=registro_gastos",
+    // "username" => "root",
+    // "password" => "1234",
+    "driver" => "Pdo_Sqlite",
+    "dsn" => "sqlite:" . realpath(__DIR__) . "/../../library/registro_gastos",
 ];
