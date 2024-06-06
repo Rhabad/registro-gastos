@@ -10,15 +10,16 @@
     <form id="form-filtro" class="row">
         <select class="form-select col" aria-label="Default select example">
             <option selected>Agrupacion/Tipo</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+            <?php foreach ($tipos as $tipo): ?>
+                <option value="<?= $tipo->id_tipo_prod; ?>"><?= $tipo->tipo_prod; ?></option>
+            <?php endforeach; ?>
         </select>
         <select class="form-select col" aria-label="Default select example">
             <option selected>Zona</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+            <?php foreach ($establs as $establ): ?>
+                <option value="<?= $establ->id_establ_com; ?>"><?= $establ->zona; ?> - <?= $establ->nombre_establ; ?>
+                </option>
+            <?php endforeach; ?>
         </select>
         <select class="form-select col" aria-label="Default select example">
             <option selected>Open this select menu</option>

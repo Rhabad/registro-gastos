@@ -100,11 +100,17 @@ class RegistroController extends AbstractActionController
     public function registroVerAction()
     {
         $registroGw = new RegistroGw($this->db);
+        $tipoGw = new TipoProductoGw($this->db);
+        $establGw = new EstablecimientoGw($this->db);
 
         $registros = $registroGw->listarRegistros();
+        $tipos = $tipoGw->listarTipo();
+        $establs = $establGw->listarEstablecimiento();
 
         return [
             'registros' => $registros,
+            'tipos' => $tipos,
+            'establs' => $establs
         ];
     }
 }
