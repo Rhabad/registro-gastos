@@ -113,4 +113,24 @@ class RegistroController extends AbstractActionController
             'establs' => $establs
         ];
     }
+
+    public function registroFiltroAction()
+    {
+        $dato = $this->params()->fromPost();
+
+        $registroGw = new RegistroGw($this->db);
+
+        // separa el atributo zona enviado
+        $zona = explode('-', str_replace(' ', '', $dato['zona']));
+
+
+        $wheres = [
+            'tipo_prod' => $dato['tipo'],
+            'nombre_establ' => $zona[1],
+            'zona' => $zona[0],
+            'nombre_prod' => $dato['producto'],
+        ];
+
+        $registroGw->listarRegistros($wheres);
+    }
 }

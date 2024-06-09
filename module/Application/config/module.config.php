@@ -52,6 +52,16 @@ return [
                     ],
                 ],
             ],
+            'registro-filtro' => [
+                'type' => Literal::class,
+                'options' => [
+                    'route' => '/registro-filtro',
+                    'defaults' => [
+                        'controller' => Controller\RegistroController::class,
+                        'action' => 'registroFiltro',
+                    ],
+                ],
+            ],
 
             /**
              * productos

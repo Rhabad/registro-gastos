@@ -35,8 +35,32 @@ class RegistroGw
         );
     }
 
-    public function listarRegistros()
+    public function listarRegistros(array $wheres = [])
     {
+
+        // realizar los filtros, o sea... procesar el array para pasarlo a where en la consulta
+        $whereStr = "";
+
+        if (count($wheres) > 0) {
+            $whereStr = 'WHERE';
+
+            foreach ($wheres as $key => $where) {
+                $whereStr = ' ' . $key . ' = :' . $where . ' AND ';
+            }
+        }
+
+        $lastAnd = strrpos($whereStr, 'AND');
+
+        $whereStrFiltro = '';
+        if ($lastAnd !== false) {
+            if (substr($whereStr, $lastAnd) === 'AND') {
+                $whereStrFiltro = substr($whereStr, 0, $lastAnd);
+            }
+        } else {
+            $whereStrFiltro = $whereStr;
+        }
+
+
         $query = 'SELECT
         r.id_registro as id,
         p.nombre_prod as producto,
@@ -50,8 +74,9 @@ class RegistroGw
         registro r
         LEFT JOIN producto p ON r.prod_id = p.id_producto
         LEFT JOIN tipo_producto tp ON p.tipo_prod_id = tp.id_tipo_prod
-        LEFT JOIN establecimiento_comercial ec ON r.establ_id = ec.id_establ_com';
+        LEFT JOIN establecimiento_comercial ec ON r.establ_id = ec.id_establ_com '
+            . $whereStrFiltro;
 
-        return $this->db->ejecutarQuery($query);
+        return $this->db->ejecutarQuery($query, $wheres);
     }
 }

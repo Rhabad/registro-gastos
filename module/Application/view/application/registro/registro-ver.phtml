@@ -1,21 +1,20 @@
 <style>
     .tachado {
-        opacity: 0.5;
         color: rgba(0, 0, 0, 0.5);
         font-style: italic;
     }
 </style>
 
 <div class="btn-group mb-3" role="group" aria-label="Basic checkbox toggle button group">
-    <form id="form-filtro" class="row g-2">
+    <form id="filtro" class="row g-2" method="get">
         <select class="form-select col" aria-label="Default select example">
-            <option selected>Agrupacion/Tipo</option>
+            <option selected name="tipo">Agrupacion</option>
             <?php foreach ($tipos as $tipo): ?>
                 <option value="<?= $tipo->id_tipo_prod; ?>"><?= $tipo->tipo_prod; ?></option>
             <?php endforeach; ?>
         </select>
         <select class="form-select col" aria-label=" Default select example">
-            <option selected>Zona</option>
+            <option selected name="zona">Zona</option>
             <?php foreach ($establs as $establ): ?>
                 <option value="<?= $establ->id_establ_com; ?>"><?= $establ->zona; ?> - <?= $establ->nombre_establ; ?>
                 </option>
@@ -38,7 +37,7 @@
         <tr class="table-primary">
             <th>ID</th>
             <th>Producto</th>
-            <th>Tipo</th>
+            <th>Agrupacion</th>
             <th>Costo</th>
             <th>Cantidad</th>
             <th>Fecha Registro</th>
@@ -64,8 +63,6 @@
                     } else if ($registro->oferta < $registro->precio) {
                         echo "$" . $registro->oferta . " <s class=\"tachado\">$" . $registro->precio . "</s>";
                     }
-
-
                     ?>
                 </td>
 
