@@ -43,25 +43,15 @@ class RegistroGw
         $params = [];
 
         if (count($wheres) > 0) {
-            $whereStr = 'WHERE';
+            $wheresClausuras = [];
 
             foreach ($wheres as $key => $where) {
-                $whereStr .= ' ' . $key . ' = :' . $key . ' AND';
+                $wheresClausuras[] = $key . ' = :' . $key;
                 $params[] = $where;
             }
+
+            $whereStr = 'WHERE ' . implode(' AND ', $wheresClausuras);
         }
-
-        $lastAnd = strrpos($whereStr, 'AND');
-
-        $whereStrFiltro = '';
-        if ($lastAnd !== false) {
-            if (substr($whereStr, $lastAnd) === 'AND') {
-                $whereStrFiltro = substr($whereStr, 0, $lastAnd);
-            }
-        } else {
-            $whereStrFiltro = $whereStr;
-        }
-
 
         $query = 'SELECT
         r.id_registro as id,
@@ -77,7 +67,7 @@ class RegistroGw
         LEFT JOIN producto p ON r.prod_id = p.id_producto
         LEFT JOIN tipo_producto tp ON p.tipo_prod_id = tp.id_tipo_prod
         LEFT JOIN establecimiento_comercial ec ON r.establ_id = ec.id_establ_com '
-            . $whereStrFiltro;
+            . $whereStr;
 
         return $this->db->ejecutarQuery($query, $params);
     }
