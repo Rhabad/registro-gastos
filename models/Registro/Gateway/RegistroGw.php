@@ -40,12 +40,14 @@ class RegistroGw
 
         // realizar los filtros, o sea... procesar el array para pasarlo a where en la consulta
         $whereStr = "";
+        $params = [];
 
         if (count($wheres) > 0) {
             $whereStr = 'WHERE';
 
             foreach ($wheres as $key => $where) {
-                $whereStr = ' ' . $key . ' = :' . $where . ' AND ';
+                $whereStr .= ' ' . $key . ' = :' . $key . ' AND';
+                $params[] = $where;
             }
         }
 
@@ -77,6 +79,6 @@ class RegistroGw
         LEFT JOIN establecimiento_comercial ec ON r.establ_id = ec.id_establ_com '
             . $whereStrFiltro;
 
-        return $this->db->ejecutarQuery($query, $wheres);
+        return $this->db->ejecutarQuery($query, $params);
     }
 }

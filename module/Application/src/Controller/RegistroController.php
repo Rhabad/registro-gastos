@@ -103,7 +103,35 @@ class RegistroController extends AbstractActionController
         $tipoGw = new TipoProductoGw($this->db);
         $establGw = new EstablecimientoGw($this->db);
 
-        $registros = $registroGw->listarRegistros();
+
+        $tipoParam = $this->params()->fromQuery('tipo');
+        $tipo = ($tipoParam == "Agrupacion") ? null : $tipoParam;
+
+        $zonaParam = $this->params()->fromQuery('zona');
+        $zona = ($zonaParam == "Zona") ? null : $zonaParam;
+
+        $producto = $this->params()->fromQuery('producto');
+
+        $registroGw = new RegistroGw($this->db);
+        $wheres = [];
+
+        if (!empty($tipo)) {
+            $wheres['id_tipo_prod'] = $tipo;
+        }
+
+        if (!empty($zona)) {
+            // // separa el atributo zona enviado
+            // $newZona = explode('-', str_replace(' ', '', $zona));
+            // $wheres['nombre_establ'] = $newZona[1];
+            // $wheres['zona'] = $newZona[0];
+            $wheres['id_establ_com'] = $zona;
+        }
+
+        if (!empty($producto)) {
+            $wheres['nombre_prod'] = $producto;
+        }
+
+        $registros = $registroGw->listarRegistros($wheres);
         $tipos = $tipoGw->listarTipo();
         $establs = $establGw->listarEstablecimiento();
 
@@ -116,21 +144,6 @@ class RegistroController extends AbstractActionController
 
     public function registroFiltroAction()
     {
-        $dato = $this->params()->fromPost();
 
-        $registroGw = new RegistroGw($this->db);
-
-        // separa el atributo zona enviado
-        $zona = explode('-', str_replace(' ', '', $dato['zona']));
-
-
-        $wheres = [
-            'tipo_prod' => $dato['tipo'],
-            'nombre_establ' => $zona[1],
-            'zona' => $zona[0],
-            'nombre_prod' => $dato['producto'],
-        ];
-
-        $registroGw->listarRegistros($wheres);
     }
 }

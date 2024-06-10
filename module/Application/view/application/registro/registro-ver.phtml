@@ -6,15 +6,15 @@
 </style>
 
 <div class="btn-group mb-3" role="group" aria-label="Basic checkbox toggle button group">
-    <form id="filtro" class="row g-2" method="get">
-        <select class="form-select col" aria-label="Default select example">
-            <option selected name="tipo">Agrupacion</option>
+    <form id="form-filtro" class="row g-2" method="get" action="">
+        <select class="form-select col" name="tipo" aria-label="Default select example">
+            <option selected>Agrupacion</option>
             <?php foreach ($tipos as $tipo): ?>
                 <option value="<?= $tipo->id_tipo_prod; ?>"><?= $tipo->tipo_prod; ?></option>
             <?php endforeach; ?>
         </select>
-        <select class="form-select col" aria-label=" Default select example">
-            <option selected name="zona">Zona</option>
+        <select class="form-select col" name="zona" aria-label=" Default select example">
+            <option selected>Zona</option>
             <?php foreach ($establs as $establ): ?>
                 <option value="<?= $establ->id_establ_com; ?>"><?= $establ->zona; ?> - <?= $establ->nombre_establ; ?>
                 </option>
@@ -81,3 +81,7 @@
         <?php endforeach; ?>
     </tbody>
 </table>
+
+<script>
+
+</script>
